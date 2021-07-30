@@ -277,11 +277,40 @@ public class AddressBook {
 			}
 		}
 	}
+//    Search all persons present in city in address book
+    private void searchByCity() {
+        int count = 0;
+        sc = new Scanner(System.in);
+        System.out.print("enter city name :-> ");
+        String city = sc.next();
+        for (Person person : list) {
+            if (person.city.equalsIgnoreCase(city)) {
+                System.out.println(person);
+                count++;
+            }
+        }
+        System.out.println("Total number of person from entered city is :-> " + count);
+    }
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int i=0;
 		System.out.println("Welcome to Address Book Porgram");
-		addressBook.createAddressBook();
+		while (i == 0) {
+			System.out.println("What you want to do: ");
+			System.out.println("1.Creat Address Book.\n2.To search persons in city");
+			int choose = sc.nextInt();
+			switch (choose) {
+			case 1:
+				addressBook.createAddressBook();
+				break;
+			case 2:
+				addressBook.searchByCity();
+				break;
+	
+			}
+		}
 	}
 
 }
