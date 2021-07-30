@@ -23,6 +23,7 @@ public class AddressBook {
 
         System.out.print("Enter first name :: ");
         String firstName = sc.next();
+        
 
         System.out.print("Enter last name :: ");
         String lastName = sc.next();
@@ -136,6 +137,7 @@ public class AddressBook {
 
     }
 
+    // Ensure there is no Duplicate Entry
     private Person getPerson(String editPersonName) {
         Iterator iterator = list.iterator();
         if (iterator.hasNext()) {
@@ -143,6 +145,9 @@ public class AddressBook {
                 Person person = (Person) iterator.next();
                 if (person.firstName.equalsIgnoreCase(editPersonName)) {
                     return person;
+                }
+                else {
+                	System.out.println("Person Already exist");
                 }
             }
         }
@@ -162,6 +167,7 @@ public class AddressBook {
 
     }
     
+//    Create New address book for different persons
     public void createAddressBook() {
 
 		while (true) {
@@ -206,6 +212,11 @@ public class AddressBook {
 						break;
 					case 3:
 						addressBook.deletePerson();
+						break;
+					case 4:
+						System.out.println("Enter first name to check for duplicancy");
+                        String enteredName = sc.next();
+                        addressBook.getPerson(enteredName);
 						break;
 					default:
 						System.out.println("Choose valid option");
